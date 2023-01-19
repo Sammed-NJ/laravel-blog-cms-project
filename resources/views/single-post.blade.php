@@ -8,7 +8,7 @@
                     <!-- ======= Single Post Content ======= -->
                     <div class="single-post">
                         <figure class="my-4">
-                            <img src="{{ $post->posts_images }}" alt="" class="img-fluid" />
+                            <img src="{{ asset('storage/' . $post->posts_images) }}" alt="" class="img-fluid" />
                         </figure>
                         <div class="post-meta">
                             <span class="date">Business</span>

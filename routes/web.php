@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('home', [
-        'posts' => Post::all(),
+        'posts' => Post::orderBy('created_at', 'desc')->get(),
     ]);
 })->name('home');
 
@@ -40,5 +40,12 @@ Route::get('/post/{post}', [PostController::class, 'single_post'])->name('post')
 // });
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // * View Post Table
+    Route::get('/posts/view', [PostController::class, 'index'])->name('posts.table');
+    // * Create Post Form
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    // * Store Post data
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 });
-Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');

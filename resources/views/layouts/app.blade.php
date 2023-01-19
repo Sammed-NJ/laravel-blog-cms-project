@@ -29,7 +29,7 @@
     <link href="{{ asset('/vendor/aos/aos.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS Files -->
-    <link href="{{ asset('/css/variables.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/blog-variables.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/blog-styles.css') }}" rel="stylesheet">
 
     <!-- Scripts -->

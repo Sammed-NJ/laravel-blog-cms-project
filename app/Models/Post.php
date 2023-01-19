@@ -15,7 +15,7 @@ class Post extends Model
         'title',
         'user_id',
         'content',
-        'post_images',
+        'posts_images',
     ];
 
 
