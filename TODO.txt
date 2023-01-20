@@ -1,0 +1,56 @@
+// =============================================================================================
+
+/*
+* If not logged in then only allowed to
+* | view home page (all blogs) 👍🏽
+* | single post 👍🏽
+* | login page 👍🏽
+* | register page 👍🏽
+======================================================
+* If logged in as User ( user who can only read blogs ) then only allowed to
+* | view home page (all blogs) 👍🏽
+* | single post 👍🏽
+* | login page 👍🏽
+* | register page 👍🏽
+* | add comment and reply
+* | email to subscribe
+*/
+
+/*
+* If logged in as Blogger ( User who can post blogs ) then only allowed to
+* | view home page (all blogs) 👍🏽
+* | single post 👍🏽
+* | login page 👍🏽
+* | register page 👍🏽
+* | add comment and reply
+* | email to subscribe
+* | entry to Blogger Dashboard 👍🏽
+* | View blogger post 👍🏽
+* | Create blogger post 👍🏽
+* | Edit blogger post
+* | Delete blogger post
+* | Edit Blogger profile
+* | Delete Blogger profile
+*/
+
+
+/*
+* If logged in as Admin then allowed to
+* | view home page (all blogs) 👍🏽
+* | single post 👍🏽
+* | login page 👍🏽
+* | register page 👍🏽
+* | add comment and reply
+* | entry to admin Dashboard 👍🏽
+* | View admin post
+* | Create admin post
+* | Edit admin post
+* | Delete admin post
+* | Edit admin profile
+* | Delete admin profile
+* | View blogger post
+* | Delete blogger post
+* | delete comment
+* | Set roles blogger ? user ? admin ?
+* | View user email to subscribe list
+*/

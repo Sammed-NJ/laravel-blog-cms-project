@@ -19,9 +19,11 @@ class PostController extends Controller
     // * View Post Table in Admin
     public function index()
     {
+
+        // dd(auth()->user()->posts()->get());
         return view(
             'admin.posts.posts-table',
-            ['posts' => Post::orderBy('created_at', 'desc')->get()]
+            ['posts' => auth()->user()->posts()->orderBy('created_at', 'desc')->get()]
         );
     }
 
@@ -54,5 +56,51 @@ class PostController extends Controller
         Post::create($postFormField);
 
         return redirect('admin/posts/view')->with('message', 'Post Uploaded successfully!');
+    }
+
+    // * Post edit form
+    public function edit(Post $post)
+    {
+
+        return view(
+            'admin.posts.edit',
+            ['post' => $post]
+        );
+
+        // $post->delete();
+
+        // return redirect('admin/posts/view')->with('message', 'Post Deleted successfully!');
+    }
+    // * Post Update
+    public function update(Request $request, Post $post)
+    {
+
+        // dd($request->posts_images);
+        // dd($request->all());
+        // dd($request->file('posts_images'));
+
+        $postFormField = $request->validate([
+            'title' => 'required | min:8 | max:255',
+            'content' => 'required',
+        ]);
+
+        if ($request->hasFile('posts_images')) {
+            $postFormField['posts_images'] = $request->posts_images->store('post_images', 'public');
+        }
+
+        $postFormField['user_id'] = auth()->id();
+
+        $post->update($postFormField);
+
+        return redirect('admin/posts/view')->with('message', 'Post Updated Successfully!');
+    }
+
+    // * Post Delete
+    public function destroy(Post $post)
+    {
+
+        $post->delete();
+
+        return redirect('admin/posts/view')->with('message', 'Post Deleted successfully!');
     }
 }

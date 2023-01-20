@@ -30,7 +30,7 @@
           {{-- <li class="nav-heading">Pages</li> --}}
 
           <li class="nav-item">
-              <a class="nav-link collapsed" href="users-profile.html">
+              <a class="nav-link collapsed" href="{{ route('users.table') }}">
                   <i class="bi bi-person"></i>
                   <span>View Users</span>
               </a>

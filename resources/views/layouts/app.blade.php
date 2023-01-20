@@ -79,6 +79,9 @@
                         <li class="nav-item dropdown pe-3">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Profile"
+                                    class="rounded-circle mx-3" style="width:36px;">
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile "

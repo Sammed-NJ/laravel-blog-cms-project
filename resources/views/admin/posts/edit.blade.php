@@ -12,7 +12,7 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <section class="d-flex justify-content-center my-5">
+    <section class="d-flex justify-content-center">
         <div class="col-lg-6">
 
             <div class="card">
@@ -21,11 +21,13 @@
                     <hr class="pb-2">
 
                     <!-- Vertical Form -->
-                    <form class="row g-3" action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="row g-3" action="{{ route('post-update', $post->id) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInput" name="title"
-                                placeholder="Post Title">
+                                placeholder="Post Title" value="{{ $post->title }}">
                             <label for="floatingInput" class="px-3">Post Title</label>
                             @error('title')
                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -37,6 +39,8 @@
                         <div class="col-12">
                             <label for="inputNumber" class="form-label">File Upload</label>
                             <input class="form-control" type="file" id="formFile" name="posts_images">
+                            <img src="{{ asset('storage/' . $post->posts_images) }}" alt="" class="my-3"
+                                style="width:100px;">
                             @error('posts_images')
                                 <div class="alert alert-danger py-1 mt-2" role="alert">
                                     <i class="bi bi-exclamation-octagon me-1"></i>
@@ -45,8 +49,8 @@
                             @enderror
                         </div>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Write Blog Content..." id="floatingTextarea" style="height: 100px;"
-                                name="content"></textarea>
+                            <textarea class="form-control" placeholder="Write Blog Content..." id="floatingTextarea" style="height: 200px;"
+                                name="content">{{ $post->content }}</textarea>
                             <label for="floatingTextarea" class="px-3">Post Content</label>
                             @error('content')
                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -56,7 +60,7 @@
                             @enderror
                         </div>
                         <div class="text-center ">
-                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            <button type="submit" class="btn btn-primary w-100">Update</button>
                         </div>
                     </form><!-- Vertical Form -->
 

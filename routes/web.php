@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -40,7 +41,14 @@ Route::get('/post/{post}', [PostController::class, 'single_post'])->name('post')
 // });
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
+    // * View Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // * View Users Table
+    Route::get('/users/view', [UserController::class, 'index'])->name('users.table');
+    // * View Users Details
+    Route::get('/user/{id}', [UserController::class, 'admin_user_setting'])->name('user');
+
 
     // * View Post Table
     Route::get('/posts/view', [PostController::class, 'index'])->name('posts.table');
@@ -48,4 +56,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     // * Store Post data
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    // * Update Post data
+    Route::get('/posts/{post}', [PostController::class, 'edit'])->name('post-edit');
+    // Route::patch('/posts/{post}', [PostController::class, 'destroy'])->name('post-edit');
+    Route::put('/posts/{post}', [PostController::class, 'update'])->name('post-update');
+    // * Delete Post data
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('post-delete');
 });
