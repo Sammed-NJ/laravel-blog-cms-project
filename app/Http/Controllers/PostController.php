@@ -20,16 +20,28 @@ class PostController extends Controller
     public function index()
     {
 
-        // dd(auth()->user()->posts()->get());
-        return view(
-            'admin.posts.posts-table',
-            ['posts' => auth()->user()->posts()->orderBy('created_at', 'desc')->get()]
-        );
+        // dd(auth()->user()->name);
+
+
+        if (auth()->user()->name === 'admin') {
+            return view(
+
+                'admin.posts.posts-table',
+                ['posts' => Post::orderBy('created_at', 'desc')->get()]
+            );
+        } else {
+            return view(
+
+                'admin.posts.posts-table',
+                ['posts' => auth()->user()->posts()->orderBy('created_at', 'desc')->get()]
+            );
+        }
     }
 
     // * Create/View Post Form in Admin
     public function create()
     {
+
         return view('admin.posts.create');
     }
 
@@ -55,7 +67,7 @@ class PostController extends Controller
 
         Post::create($postFormField);
 
-        return redirect('admin/posts/view')->with('message', 'Post Uploaded successfully!');
+        return redirect('/posts')->with('message', 'Post Uploaded successfully!');
     }
 
     // * Post edit form
@@ -92,7 +104,7 @@ class PostController extends Controller
 
         $post->update($postFormField);
 
-        return redirect('admin/posts/view')->with('message', 'Post Updated Successfully!');
+        return redirect('posts')->with('message', 'Post Updated Successfully!');
     }
 
     // * Post Delete
@@ -101,6 +113,6 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect('admin/posts/view')->with('message', 'Post Deleted successfully!');
+        return redirect('posts')->with('message', 'Post Deleted successfully!');
     }
 }

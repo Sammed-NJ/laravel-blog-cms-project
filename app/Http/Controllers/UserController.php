@@ -25,4 +25,46 @@ class UserController extends Controller
             ['user' => $id],
         );
     }
+
+
+
+    public function create(Request $request, User $user)
+    {
+
+        // dd($request->all());
+
+        $profileInputs = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+
+        ]);
+
+
+
+        if ($request->hasFile('avatar')) {
+            $profileInputs['avatar'] = $request->avatar->store('avatars', 'public');
+        }
+
+        // $profileInputs['user_id'] = auth()->id();
+
+        $user->update($profileInputs);
+
+        return redirect('posts')->with('message', 'Post Updated Successfully!');
+    }
+
+
+
+
+    // * User Delete
+    public function destroy($id)
+    {
+
+        $id = USer::find($id);
+
+        $id->delete();
+
+        return redirect('users/view')->with('message', 'User Deleted successfully!');
+    }
 }

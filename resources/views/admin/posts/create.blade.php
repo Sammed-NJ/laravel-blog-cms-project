@@ -15,6 +15,8 @@
     <section class="d-flex justify-content-center my-5">
         <div class="col-lg-6">
 
+            {{-- ? ADD THIS Later <x-tinyMCE-editor /> --}}
+
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title pb-0 mb-0">Craete a Post</h5>

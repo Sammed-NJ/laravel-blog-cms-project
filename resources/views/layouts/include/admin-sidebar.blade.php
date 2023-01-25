@@ -10,38 +10,81 @@
               </a>
           </li><!-- End Dashboard Nav -->
 
+          {{-- ** VIEW OWN POST --}}
+
           <li class="nav-item">
-              <a class="nav-link collapsed" data-bs-target="#posts-nav" data-bs-toggle="collapse" href="#">
-                  <i class="bi bi-menu-button-wide"></i><span>Posts</span><i class="bi bi-chevron-down ms-auto"></i>
+              <a class="nav-link collapsed" data-bs-target="#own-posts-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-menu-button-wide"></i><span>My Post</span><i class="bi bi-chevron-down ms-auto"></i>
               </a>
-              <ul id="posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <ul id="own-posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li>
                       <a href="{{ route('posts.table') }}">
-                          <i class="bi bi-circle"></i><span>View Posts</span>
+                          <i class="bi bi-circle"></i><span>All Posts</span>
                       </a>
                   </li>
                   <li>
                       <a href="{{ route('posts.create') }}">
-                          <i class="bi bi-circle"></i><span>Create a Post</span>
+                          <i class="bi bi-circle"></i><span>Write a Post</span>
+                      </a>
+                  </li>
+              </ul>
+          </li><!-- End Own Posts Nav -->
+
+
+          {{-- ** VIEW USER & POST --}}
+
+          <li class="nav-item">
+              <a class="nav-link collapsed" data-bs-target="#user-posts-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-menu-button-wide"></i><span>User Data</span><i class="bi bi-chevron-down ms-auto"></i>
+              </a>
+              <ul id="user-posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                      <a href="{{ route('posts.table') }}">
+                          {{-- <a href="#"> --}}
+                          <i class="bi bi-circle"></i><span>Posts</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{ route('users.table') }}">
+                          {{-- <a href="#"> --}}
+                          <i class="bi bi-circle"></i><span>Users</span>
                       </a>
                   </li>
               </ul>
           </li><!-- End Posts Nav -->
-          {{-- <li class="nav-heading">Pages</li> --}}
+
+          {{-- ** VIEW ROLES & PERMISSIONS --}}
 
           <li class="nav-item">
-              <a class="nav-link collapsed" href="{{ route('users.table') }}">
+              <a class="nav-link collapsed" data-bs-target="#roles-and-permissions-nav" data-bs-toggle="collapse"
+                  href="#">
+                  <i class="bi bi-menu-button-wide"></i><span>Roles and Permissions</span><i
+                      class="bi bi-chevron-down ms-auto"></i>
+              </a>
+              <ul id="roles-and-permissions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                      <a href="">
+                          <i class="bi bi-circle"></i><span>Roles</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="">
+                          <i class="bi bi-circle"></i><span>Permissions</span>
+                      </a>
+                  </li>
+              </ul>
+          </li><!-- End Roles and Permissions Nav -->
+
+
+          <li class="nav-heading">Pages</li>
+
+          <li class="nav-item">
+              <a class="nav-link collapsed" href="{{ route('user', Auth::user()->id) }}">
                   <i class="bi bi-person"></i>
-                  <span>View Users</span>
+                  <span>Manage Account</span>
               </a>
-          </li><!-- End Users Page Nav -->
+          </li><!-- End Manage Account Page Nav -->
 
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="pages-contact.html">
-                  <i class="bi bi-envelope"></i>
-                  <span>Contact</span>
-              </a>
-          </li><!-- End Contact Page Nav -->
 
           <li class="nav-item">
               <a class="nav-link collapsed" href="pages-login.html">

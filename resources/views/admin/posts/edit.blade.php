@@ -21,7 +21,7 @@
                     <hr class="pb-2">
 
                     <!-- Vertical Form -->
-                    <form class="row g-3" action="{{ route('post-update', $post->id) }}" method="post"
+                    <form class="row g-3" action="{{ route('post.update', $post->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')

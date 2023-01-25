@@ -1255,3 +1255,11 @@ h6 {
     /* width: 100px; */
     height: 50px;
 }
+
+.tox-tinymce {
+    padding: 0;
+}
+
+.tox-promotion {
+    display: none;
+}

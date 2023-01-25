@@ -21,7 +21,7 @@
                             @foreach ($posts as $index => $post)
                                 @if ($index <= 5)
                                     <div class="swiper-slide">
-                                        <a href="single-post.html" class="img-bg d-flex align-items-end"
+                                        <a href="{{ route('post', $post->id) }}" class="img-bg d-flex align-items-end"
                                             style="background-image: url({{ asset('storage/' . $post->posts_images) }});">
                                             <div class="img-bg-inner">
                                                 <h2>{{ $post->title }}</h2>
