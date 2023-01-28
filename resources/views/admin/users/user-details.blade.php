@@ -74,7 +74,7 @@
 
 
                         <!-- Profile Edit Form -->
-                        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form">
+                        <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row mb-3">
@@ -85,8 +85,23 @@
                                         class="rounded-circle" style="width:100px;">
                                     <div class="row my-3">
                                         <div class="col-md-8 col-lg-9">
+
+                                            @error('avatar')
+                                                <div class="alert alert-danger py-1 mt-2" role="alert">
+                                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+
+
+
                                             <input name="avatar" type="file" class="form-control" id="avatar">
                                         </div>
+
+
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -94,9 +109,25 @@
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-lg-3 col-form-label">Name</label>
                                 <div class="col-md-8 col-lg-9">
+
+
+                                    @error('name')
+                                        <div class="alert alert-danger py-1 mt-2" role="alert">
+                                            <i class="bi bi-exclamation-octagon me-1"></i>
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
+
+
                                     <input name="name" type="text" class="form-control" id="name"
                                         value="{{ Auth::user()->name }}">
                                 </div>
+
+
+
+
+
                             </div>
 
                             {{-- <div class="row mb-3">
@@ -109,13 +140,29 @@
                             <div class="row mb-3">
                                 <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                 <div class="col-md-8 col-lg-9">
+
+
+                                    @error('email')
+                                        <div class="alert alert-danger py-1 mt-2" role="alert">
+                                            <i class="bi bi-exclamation-octagon me-1"></i>
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
+
+
                                     <input name="email" type="email" class="form-control" id="email"
                                         value="{{ Auth::user()->email }}">
                                 </div>
+
+
+
+
+
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                                <button type="submit" class="btn btn-primary w-100">Update</button>
                             </div>
                         </form><!-- End Profile Edit Form -->
 

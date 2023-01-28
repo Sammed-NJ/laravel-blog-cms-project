@@ -48,7 +48,7 @@ Route::get('/users/view', [UserController::class, 'index'])->name('users.table')
 Route::get('/user/{id}', [UserController::class, 'admin_user_setting'])->name('user');
 
 // * update profile
-Route::put('user', [UserController::class, 'create'])->name('profile.update');
+Route::put('user', [UserController::class, 'update'])->name('profile.update');
 
 
 

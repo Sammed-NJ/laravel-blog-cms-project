@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -26,16 +28,14 @@ class UserController extends Controller
         );
     }
 
+    // * Updating Profile
 
-
-    public function create(Request $request, User $user)
+    public function update(Request $request, User $user)
     {
-
-        // dd($request->all());
 
         $profileInputs = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
             'avatar' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
 
@@ -47,11 +47,9 @@ class UserController extends Controller
             $profileInputs['avatar'] = $request->avatar->store('avatars', 'public');
         }
 
-        // $profileInputs['user_id'] = auth()->id();
+        Auth::user()->update($profileInputs);
 
-        $user->update($profileInputs);
-
-        return redirect('posts')->with('message', 'Post Updated Successfully!');
+        return back()->with('message', 'Profile Updated Successfully!');
     }
 
 
