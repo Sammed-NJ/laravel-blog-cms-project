@@ -63,12 +63,12 @@
               </a>
               <ul id="roles-and-permissions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li>
-                      <a href="">
+                      <a href="{{ route('roles') }}">
                           <i class="bi bi-circle"></i><span>Roles</span>
                       </a>
                   </li>
                   <li>
-                      <a href="">
+                      <a href="{{ route('permissions') }}">
                           <i class="bi bi-circle"></i><span>Permissions</span>
                       </a>
                   </li>

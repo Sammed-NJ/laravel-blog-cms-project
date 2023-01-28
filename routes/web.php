@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\Admin\DashboardController;
 
 
@@ -41,6 +43,8 @@ Auth::routes();
 // Route::prefix('admin')->middleware(['auth'])->group(function () {
 // * View Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('roles', [RolesController::class, 'index'])->name('roles');
+Route::get('permissions', [PermissionsController::class, 'index'])->name('permissions');
 
 // * View Users Table
 Route::get('/users/view', [UserController::class, 'index'])->name('users.table');
