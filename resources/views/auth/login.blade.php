@@ -14,7 +14,8 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}">
+                                    <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}"
+                                        id="loginForm">
                                         @csrf
 
                                         <div class="col-12">
@@ -23,7 +24,7 @@
                                             <div class="input-group has-validation">
 
 
-                                                <input id="yourEmail id" type="email"
+                                                <input id="yourEmail email" type="email"
                                                     class="form-control
                                             @error('email') is-invalid
                                             @enderror"
@@ -64,7 +65,7 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary w-100">
+                                            <button type="submit" class="btn btn-primary w-100" id="submitBtn">
                                                 {{ __('Login') }}
                                             </button>
 

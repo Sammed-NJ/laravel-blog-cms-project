@@ -12,7 +12,9 @@ class Permissions extends Model
     use HasFactory;
 
     //  * Fillable Values to be Assigned
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+    ];
 
 
     // * Permissions as Many Roles

@@ -65,6 +65,6 @@ class User extends Authenticatable
     // * Users as to Many Roles
     public function roles()
     {
-        return $this->belongsToMany(Roles::class);
+        return $this->belongsToMany(Roles::class, 'users_roles')->withPivot('roles_id', 'user_id');
     }
 }

@@ -12,7 +12,10 @@ class roles extends Model
 
 
     //  * Fillable Values to be Assigned
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'description'
+    ];
 
     // * Roles as Many Permissions
     public function permissions()
@@ -26,6 +29,7 @@ class roles extends Model
     public function users()
     {
 
-        return $this->belongsToMany(User::class);
+        // return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'users_roles')->withPivot('roles_id', 'user_id');
     }
 }

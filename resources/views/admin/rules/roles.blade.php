@@ -22,14 +22,25 @@
                     <hr class="pb-2">
 
                     <!-- Vertical Form -->
-                    <form class="row g-3" action="" method="post" enctype="multipart/form-data">
+                    <form class="row g-3" action="" method="post">
                         @csrf
-                        @method('PUT')
+                        {{-- @method('PUT') --}}
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" name="RoleName"
+                            <input type="text" class="form-control" id="floatingInput" name="name"
                                 placeholder="Post Title" value="">
                             <label for="floatingInput" class="px-3">Add Role</label>
-                            @error('RoleName')
+                            @error('name')
+                                <div class="alert alert-danger py-1 mt-2" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" name="description"
+                                placeholder="Post Title" value="">
+                            <label for="floatingInput" class="px-3">Role Description</label>
+                            @error('description')
                                 <div class="alert alert-danger py-1 mt-2" role="alert">
                                     <i class="bi bi-exclamation-octagon me-1"></i>
                                     {{ $message }}
@@ -37,7 +48,7 @@
                             @enderror
                         </div>
                         <div class="text-center ">
-                            <button type="submit" class="btn btn-primary w-100">Add New Roles</button>
+                            <button type="submit" class="btn btn-primary w-100">Add Roles</button>
                         </div>
                     </form><!-- Vertical Form -->
 
@@ -48,10 +59,12 @@
         </div>
 
         <div class="col-lg-8">
+
             <div class="card">
 
                 <div class="card-body">
                     <h5 class="card-title">Users Data table</h5>
+                    <x-flash-message />
                     <table class="table datatable">
                         <thead>
                             <tr>
@@ -69,50 +82,47 @@
                                 IF (Logged in as User then view only user post table)
                                 ELSE (Logged in as Admin then view all "USER & AdDMIN" post table)
                             --}}
-                            {{-- @foreach ($posts as $key => $post) --}}
-                            <tr>
-                                <th>1</th>
-                                <td>Admin</td>
-                                <td><a href="#">05 Active</a></td>
-                                <td><a href="#">05 Active</a></td>
-                                <td>22</td>
-                                <td>09</td>
-                                <td class="d-flex gap-2">
+                            @foreach ($roles as $key => $role)
+                                <tr>
+                                    <th>{{ $key + 1 }}</th>
+                                    <td>
+                                        {{ $role->name }}
+                                    </td>
+                                    <td>
+                                        {{-- <a href="#">
+                                            {{ $role->users->count() ? '0' . $role->users->count() . 'Active' }}
+                                        </a> {{: 'No Active' }} --}}
+
+                                        @if ($role->users->count())
+                                            <a href="#">
+                                                {{ '0' . $role->users->count() . ' Active' }}
+                                            </a>
+                                        @else
+                                            No Active
+                                        @endif
+
+                                    </td>
+
+                                    <td><a href="#"> Active</a></td>
+                                    <td>{{ $role->created_at->diffForHumans() }}</td>
+                                    <td>{{ $role->updated_at->diffForHumans() }}</td>
+                                    <td class="d-flex gap-2">
 
 
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="bx bx-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#verticalycentered">
-                                        <i class="bx bx-trash"></i>
-                                    </button>
-                                    <div class="modal fade" id="verticalycentered" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Alert</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Do you want to Delete this!
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <form action="" method="POST">
-                                                        {{-- @method('DELETE')
-                                                        @csrf --}}
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- End Vertically centered Modal-->
-                                </td>
-                            </tr>
-                            {{-- @endforeach --}}
+                                        <button type="button" class="btn btn-primary">
+                                            <i class="bx bx-pencil"></i>
+                                        </button>
+
+                                        <form action="{{ route('role.delete', $role->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="bx bx-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                         <thead>
 

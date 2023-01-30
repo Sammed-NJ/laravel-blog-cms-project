@@ -76,6 +76,20 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('post.d
 // });
 
 
+
+// * Roles
+Route::get('roles', [RolesController::class, 'index'])->name('roles');
+Route::post('roles', [RolesController::class, 'store'])->name('roles.store');
+Route::delete('/roles/{role}', [RolesController::class, 'destroy'])->name('role.delete');
+
+// * Permissions
+Route::get('permissions', [PermissionsController::class, 'index'])->name('permissions');
+Route::post('permissions', [PermissionsController::class, 'store'])->name('permissions.store');
+Route::delete('/permissions/{permission}', [PermissionsController::class, 'destroy'])->name('permissions.delete');
+
+
+
+
 Route::group([
     'middleware' => 'auth',
 ], function () {
