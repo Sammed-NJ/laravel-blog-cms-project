@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Post;
+use App\Models\Roles;
+use App\Models\Permissions;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,6 +20,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    //  * Fillable Values to be Assigned
     protected $fillable = [
         'name',
         'avatar',
@@ -45,9 +49,22 @@ class User extends Authenticatable
     ];
 
 
-    // * User Belongs to Many Posts
+    // * One User as to Many Posts
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    // * Users as to Many Permissions
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permissions::class);
+    }
+
+    // * Users as to Many Roles
+    public function roles()
+    {
+        return $this->belongsToMany(Roles::class);
     }
 }
