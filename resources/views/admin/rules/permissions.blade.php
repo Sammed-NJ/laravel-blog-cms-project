@@ -22,7 +22,7 @@
                     <hr class="pb-2">
 
                     <!-- Vertical Form -->
-                    <form class="row g-3" action="{{ route('permissions') }}" method="post">
+                    <form class="row g-3 form" action="{{ route('permissions') }}" method="post">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInput" name="name"
@@ -36,7 +36,7 @@
                             @enderror
                         </div>
                         <div class="text-center ">
-                            <button type="submit" class="btn btn-primary w-100">Add Permissions</button>
+                            <button type="submit" id="submit" class="btn btn-primary w-100">Add Permissions</button>
                         </div>
                     </form><!-- Vertical Form -->
 

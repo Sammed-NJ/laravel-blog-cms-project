@@ -74,7 +74,8 @@
 
 
                         <!-- Profile Edit Form -->
-                        <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
+                        <form class="form" action="{{ route('profile.update') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row mb-3">
@@ -162,7 +163,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-100">Update</button>
+                                <button type="submit" id="submit" class="btn btn-primary w-100">Update</button>
                             </div>
                         </form><!-- End Profile Edit Form -->
 

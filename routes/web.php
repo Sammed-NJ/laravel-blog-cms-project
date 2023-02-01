@@ -19,6 +19,14 @@ use App\Http\Controllers\Admin\DashboardController;
 
 // * View All Post in front end (ONLY USER)
 Route::get('/', function () {
+
+    // $content = Post::get('tinyMSCcontent');
+    // preg_match('/<img[^>]+>/i', $content, $image);
+    // $content = str_replace($image, '', $content);
+
+    // dd($image[0], $content);
+
+
     return view('home', [
         'posts' => Post::orderBy('created_at', 'desc')->get(),
     ]);
@@ -67,6 +75,7 @@ Route::get('posts', [PostController::class, 'index'])->name('posts.table');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 // // * Store Post data
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::post('/upload', [PostController::class, 'tinymce']);
 // // * Update Post data
 Route::get('/posts/{post}', [PostController::class, 'edit'])->name('post.edit');
 // // Route::patch('/posts/{post}', [PostController::class, 'destroy'])->name('post-edit');

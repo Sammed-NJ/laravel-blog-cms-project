@@ -22,7 +22,7 @@ class PostFactory extends Factory
             'user_id' => factory(User::class),
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
-            'posts_images' => $this->faker->imageUrl('900', '570'),
+            // 'posts_images' => $this->faker->imageUrl('900', '570'),
             // 'published_at' => $this->faker->dateTime
         ];
     }

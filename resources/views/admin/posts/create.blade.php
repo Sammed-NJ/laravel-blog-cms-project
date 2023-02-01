@@ -12,11 +12,11 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <section class="d-flex justify-content-center my-5">
-        <div class="col-lg-6">
+    <section class="d-flex justify-content-center">
+        <div class="col">
 
-            {{-- ? ADD THIS Later <x-tinyMCE-editor /> --}}
-
+            <x-tinyMCE-editor />
+            {{--
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title pb-0 mb-0">Craete a Post</h5>
@@ -26,7 +26,7 @@
                     <form class="row g-3" action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" name="title"
+                            <input type="text" id="title" class="form-control" id="floatingInput" name="title"
                                 placeholder="Post Title">
                             <label for="floatingInput" class="px-3">Post Title</label>
                             @error('title')
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-12">
                             <label for="inputNumber" class="form-label">File Upload</label>
-                            <input class="form-control" type="file" id="formFile" name="posts_images">
+                            <input class="form-control" type="file" id="post-img" name="posts_images">
                             @error('posts_images')
                                 <div class="alert alert-danger py-1 mt-2" role="alert">
                                     <i class="bi bi-exclamation-octagon me-1"></i>
@@ -47,8 +47,8 @@
                             @enderror
                         </div>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Write Blog Content..." id="floatingTextarea" style="height: 100px;"
-                                name="content"></textarea>
+                            <textarea id="content" class="form-control" placeholder="Write Blog Content..." id="floatingTextarea"
+                                style="height: 100px;" name="content"></textarea>
                             <label for="floatingTextarea" class="px-3">Post Content</label>
                             @error('content')
                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -58,12 +58,12 @@
                             @enderror
                         </div>
                         <div class="text-center ">
-                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            <button type="submit" class="btn btn-primary w-100 newBtn" id="submit">Submit</button>
                         </div>
                     </form><!-- Vertical Form -->
 
                 </div>
-            </div>
+            </div> --}}
 
         </div>
 

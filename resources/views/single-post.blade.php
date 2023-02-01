@@ -8,7 +8,13 @@
                     <!-- ======= Single Post Content ======= -->
                     <div class="single-post">
                         <figure class="my-4">
-                            <img src="{{ asset('storage/' . $post->posts_images) }}" alt="" class="img-fluid" />
+
+
+                            @if ($image)
+                                {!! $image[0] !!}
+                            @else
+                                <img src="" alt="" class="NO Image" />
+                            @endif
                         </figure>
                         <div class="post-meta">
                             <span class="date">Business</span>
@@ -17,9 +23,9 @@
                         <h1 class="mb-5">
                             {{ $post->title }}
                         </h1>
-                        <p>
-                            {{ $post->content }}
-                        </p>
+
+                        {!! $content !!}
+
 
 
                     </div>

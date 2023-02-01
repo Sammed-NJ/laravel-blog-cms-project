@@ -22,7 +22,7 @@
                     <hr class="pb-2">
 
                     <!-- Vertical Form -->
-                    <form class="row g-3" action="" method="post">
+                    <form class="row g-3 form" action="" method="post">
                         @csrf
                         {{-- @method('PUT') --}}
                         <div class="form-floating">
@@ -48,7 +48,7 @@
                             @enderror
                         </div>
                         <div class="text-center ">
-                            <button type="submit" class="btn btn-primary w-100">Add Roles</button>
+                            <button type="submit" id="submit" class="btn btn-primary w-100">Add Roles</button>
                         </div>
                     </form><!-- Vertical Form -->
 

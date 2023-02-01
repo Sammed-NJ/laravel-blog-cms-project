@@ -150,7 +150,9 @@
                             <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
                             <li><a href="index.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
                             <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
-                            <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
+                            <li><a href=""><i class="bi bi-chevron-right"></i> Single
+                                    Post</a>
+                            </li>
                             <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
                             <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
                         </ul>
@@ -175,7 +177,7 @@
 
                         <ul class="footer-links footer-blog-entry list-unstyled">
                             <li>
-                                <a href="single-post.html" class="d-flex align-items-center">
+                                <a href="" class="d-flex align-items-center">
                                     <img src="assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
                                     <div>
                                         <div class="post-meta d-block"><span class="date">Culture</span> <span
@@ -188,7 +190,7 @@
                             </li>
 
                             <li>
-                                <a href="single-post.html" class="d-flex align-items-center">
+                                <a href="" class="d-flex align-items-center">
                                     <img src="assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
                                     <div>
                                         <div class="post-meta d-block"><span class="date">Culture</span> <span
@@ -202,7 +204,7 @@
                             </li>
 
                             <li>
-                                <a href="single-post.html" class="d-flex align-items-center">
+                                <a href="" class="d-flex align-items-center">
                                     <img src="assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
                                     <div>
                                         <div class="post-meta d-block"><span class="date">Culture</span> <span
@@ -215,7 +217,7 @@
                             </li>
 
                             <li>
-                                <a href="single-post.html" class="d-flex align-items-center">
+                                <a href="" class="d-flex align-items-center">
                                     <img src="assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
                                     <div>
                                         <div class="post-meta d-block"><span class="date">Culture</span> <span

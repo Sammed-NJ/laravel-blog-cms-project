@@ -1306,3 +1306,8 @@ section {
 .footer .credits a {
     color: var(--color-white);
 }
+
+.image-ratio img {
+    width: 400px;
+    height: 400px;
+}

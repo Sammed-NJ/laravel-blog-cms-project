@@ -39,6 +39,10 @@
             @yield('content')
         </main>
     </div>
+    <!-- Template Main JS File -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="{{ asset('/js/main.jquery.js') }}"></script>
     <!-- Vendor JS Files -->
     <script src="{{ asset('/vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -49,9 +53,6 @@
     <script src="{{ asset('/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('/vendor/php-email-form/validate.js') }}"></script>
 
-    <!-- Template Main JS File -->
-    <script src="{{ asset('/js/admin-main.js') }}"></script>
-    <script src="{{ asset('/js/jquery.js') }}"></script>
 </body>
 
 </html>

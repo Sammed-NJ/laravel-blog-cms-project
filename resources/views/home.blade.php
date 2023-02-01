@@ -21,11 +21,34 @@
                             @foreach ($posts as $index => $post)
                                 @if ($index <= 5)
                                     <div class="swiper-slide">
+
+
+                                        {{-- @php
+                                            $content = $post->tinyMSCcontent;
+                                            preg_match('/src="([^"]+)"/', $content, $src);
+                                            // preg_match('/src="([^"]+)"/', $content, $src);
+                                            // $onlyPath = preg_replace('/src="[^"]+"/', '', $path);
+
+                                            preg_match('/src="([^"]+)"/', $content, $src);
+
+                                            // $content = str_replace($image, '', $content);
+
+                                        @endphp
+                                        {{-- @if ($path) --}}
+                                        {{-- <div class="path-ratio"> --}}
+                                        {{-- {!! dd($src[1]) !!} --}}
+                                        {{-- </div> --}}
+                                        {{-- @else
+                                            <img src="" alt="" class="NO Image" />
+                                        @endif --}}
+
+
                                         <a href="{{ route('post', $post->id) }}" class="img-bg d-flex align-items-end"
-                                            style="background-image: url({{ asset('storage/' . $post->posts_images) }});">
+                                            style="background-image: url();">
+
                                             <div class="img-bg-inner">
                                                 <h2>{{ $post->title }}</h2>
-                                                <p>{{ Str::limit($post->content, '30', '...') }}</p>
+                                                <p>{{ Str::limit($post->description, '30', '...') }}</p>
                                             </div>
                                         </a>
                                     </div>
@@ -59,21 +82,38 @@
                             <a
                                 href="
                             {{ route('post', $post->id) }}
-                            "><img
-                                    src="{{ asset('storage/' . $post->posts_images) }}" alt=""
-                                    class="img-fluid"></a>
+                            ">
+                                @php
+                                    $content = $post->tinyMSCcontent;
+                                    preg_match('/<img[^>]+>/i', $content, $image);
+
+                                    // $content = str_replace($image, '', $content);
+
+                                @endphp
+                                @if ($image)
+                                    <div class="image-ratio">
+                                        {!! $image[0] !!}
+
+
+                                    </div>
+                                @else
+                                    <img src="" alt="" class="NO Image" />
+                                @endif
+                            </a>
                             <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span>
                                 <span>Jul 5th
                                     '22</span>
                             </div>
-                            <h2><a href="single-post.html">{{ $post->title }}</a></h2>
-                            <p class="mb-4 d-block">{{ Str::limit($post->content, '50', '...') }}</p>
+
+                            <h2><a href="{{ route('post', $post->id) }}">{{ $post->title }}</a></h2>
+                            <p class="mb-4 d-block">{{ Str::limit($post->description, '50', '...') }}</p>
 
                             <div class="d-flex align-items-center author">
-                                <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid">
+                                <div class="photo"><img src="{{ asset('storage/' . $post->user->avatar) }}" alt=""
+                                        class="img-fluid">
                                 </div>
                                 <div class="name">
-                                    <h3 class="m-0 p-0">Cameron Williamson</h3>
+                                    <h3 class="m-0 p-0">{{ $post->user->name }}</h3>
                                 </div>
                             </div>
                         </div>

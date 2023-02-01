@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Log;
+use Exception;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,16 @@ class PostController extends Controller
     // * View Single Post
     public function single_post(Post $post)
     {
-        return view('single-post', ['post' => $post]);
+
+        $content = $post->tinyMSCcontent;
+        preg_match('/<img[^>]+>/i', $content, $image);
+        $content = str_replace($image, '', $content);
+
+        return view('single-post', [
+            'post' => $post,
+            'content' => $content,
+            'image' => $image,
+        ],);
     }
 
     // * View Post Table in Admin
@@ -45,29 +55,46 @@ class PostController extends Controller
         return view('admin.posts.create');
     }
 
+
+    public function tinymce(Request $request)
+    {
+
+        // if ($request->hasFile('posts_images')) {
+        $imagePath = $request->file('file')->store('post_images', 'public');
+
+        return response()->json(['location' => "/storage/$imagePath"]);
+        // }
+    }
+
     // * Store Post data
     public function store(Request $request)
     {
-
-        // dd($request->posts_images);
         // dd($request->all());
+
+        // try {
+        // dd($request->posts_images);
+        // echo $request->get('tinyMSCcontent');
         // dd($request->file('posts_images'));
 
         $postFormField = $request->validate([
             'title' => 'required | min:8 | max:255',
             // 'posts_images' => 'file',
-            'content' => 'required',
+            'description' => 'required',
+            'tinyMSCcontent' => 'required',
         ]);
 
-        if ($request->hasFile('posts_images')) {
-            $postFormField['posts_images'] = $request->posts_images->store('post_images', 'public');
-        }
+        // if ($request->hasFile('posts_images')) {
+        // $postFormField['posts_images'] = ;
+        // }
 
         $postFormField['user_id'] = auth()->id();
 
         Post::create($postFormField);
 
         return redirect('/posts')->with('message', 'Post Uploaded successfully!');
+        // } catch (Exception $e) {
+        //     echo $e->getMessage();
+        // }
     }
 
     // * Post edit form
@@ -96,9 +123,9 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        if ($request->hasFile('posts_images')) {
-            $postFormField['posts_images'] = $request->posts_images->store('post_images', 'public');
-        }
+        // if ($request->hasFile('posts_images')) {
+        //     $postFormField['posts_images'] = $request->posts_images->store('post_images', 'public');
+        // }
 
         $postFormField['user_id'] = auth()->id();
 

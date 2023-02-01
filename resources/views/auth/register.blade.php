@@ -14,15 +14,15 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <form class="row g-3 needs-validation" method="POST" action="{{ route('register') }}"
-                                        enctype="multipart/form-data">
+                                    <form class="row g-3 needs-validation form register-form" method="POST"
+                                        action="{{ route('register') }}" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="col-12">
                                             <label for="name" class="form-label">{{ __('Name') }}</label>
 
-                                            <input id="name" type="text" class="form-control" name="name"
-                                                value="{{ old('name') }}" autocomplete="name" autofocus>
+                                            <input id="name name-register" type="text" class="form-control"
+                                                name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                             @error('name')
                                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -36,7 +36,8 @@
                                         <div class="col-12">
                                             <label for="inputNumber" class="form-label">{{ __('Add Profile') }}</label>
 
-                                            <input class="form-control" type="file" id="formFile" name="avatar">
+                                            <input class="form-control" type="file" id="formFile avatar-register"
+                                                name="avatar">
 
                                             @error('avatar')
                                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -49,8 +50,8 @@
                                         <div class="col-12">
                                             <label for="email" class="form-label">{{ __('Email Address') }}</label>
 
-                                            <input id="email" type="email" class="form-control" name="email"
-                                                value="{{ old('email') }}" autocomplete="email">
+                                            <input id="email email-register" type="email" class="form-control"
+                                                name="email" value="{{ old('email') }}" autocomplete="email">
 
                                             @error('email')
                                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -64,8 +65,8 @@
                                         <div class="col-12">
                                             <label for="password" class="form-label">{{ __('Password') }}</label>
 
-                                            <input id="password" type="password" class="form-control" name="password"
-                                                autocomplete="new-password">
+                                            <input id="password password-register" type="password" class="form-control"
+                                                name="password" autocomplete="new-password">
 
                                             @error('password')
                                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -80,8 +81,9 @@
                                             <label for="password-confirm"
                                                 class="form-label">{{ __('Confirm Password') }}</label>
 
-                                            <input id="password-confirm" type="password" class="form-control"
-                                                name="password_confirmation" autocomplete="new-password">
+                                            <input id="password-confirm confirm-password-register" type="password"
+                                                class="form-control" name="password_confirmation"
+                                                autocomplete="new-password">
 
                                             @error('password_confirmation')
                                                 <div class="alert alert-danger py-1 mt-2" role="alert">
@@ -92,7 +94,7 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary w-100">
+                                            <button type="submit" id="submit" class="btn btn-primary w-100">
                                                 {{ __('Register') }}
                                             </button>
                                         </div>

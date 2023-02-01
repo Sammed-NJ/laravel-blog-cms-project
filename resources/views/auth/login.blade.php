@@ -14,8 +14,8 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}"
-                                        id="loginForm">
+                                    <form class="row g-3 needs-validation form login-form" method="POST"
+                                        action="{{ route('login') }}" id="loginForm">
                                         @csrf
 
                                         <div class="col-12">
@@ -24,7 +24,7 @@
                                             <div class="input-group has-validation">
 
 
-                                                <input id="yourEmail email" type="email"
+                                                <input id="email email-login" type="email"
                                                     class="form-control
                                             @error('email') is-invalid
                                             @enderror"
@@ -40,9 +40,10 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                                            <label for="password password-login"
+                                                class="form-label">{{ __('Password') }}</label>
 
-                                            <input id="password yourPassword" type="password"
+                                            <input id="password " type="password"
                                                 class="form-control @error('password') is-invalid @enderror" name="password"
                                                 required autocomplete="current-password">
 
@@ -66,6 +67,8 @@
 
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary w-100" id="submitBtn">
+                                                {{-- <button type="submit" id="submit" class="btn btn-primary w-100"
+                                                id="submitBtn"> --}}
                                                 {{ __('Login') }}
                                             </button>
 
